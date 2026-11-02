@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DBLP BibTeX</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="head">
+      <div class="brand">
+        <img src="icons/32.png" width="20" height="20" alt="" />
+        <h1>DBLP BibTeX</h1>
+        <span id="status" class="status" role="status" aria-live="polite"></span>
+      </div>
+      <form id="search-form" role="search">
+        <label class="sr-only" for="q">论文名</label>
+        <input
+          id="q"
+          name="q"
+          type="search"
+          placeholder="论文名 / DBLP 记录链接"
+          autocomplete="off"
+          spellcheck="false"
+          autofocus
+        />
+        <button id="search-btn" type="submit">搜索</button>
+      </form>
+    </header>
+
+    <main id="results" class="results" aria-live="polite">
+      <p class="hint">
+        在 DBLP 上搜索并取回原始 BibTeX。首次使用会开一个 DBLP 后台标签页，让浏览器自己完成一次人机校验（约 5–15 秒），之后复用。
+      </p>
+    </main>
+
+    <footer class="foot">
+      <span>DBLP 后台标签页保持打开可复用校验</span>
+      <button id="close-tab" class="btn ghost" type="button">关闭后台标签页</button>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

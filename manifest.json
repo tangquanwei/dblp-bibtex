@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "DBLP BibTeX",
+  "version": "1.0.0",
+  "description": "用你的浏览器打开 DBLP 后台标签页，搜索论文并复制 DBLP 原始 BibTeX。",
+  "action": {
+    "default_title": "DBLP BibTeX",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/16.png",
+      "32": "icons/32.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "permissions": ["tabs", "storage", "clipboardWrite"],
+  "host_permissions": ["https://dblp.org/*"],
+  "background": {
+    "service_worker": "sw.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://dblp.org/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

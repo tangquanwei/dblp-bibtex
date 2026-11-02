@@ -1,0 +1,43 @@
+name: Bug report
+description: The extension did not return BibTeX, or behaved unexpectedly.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. DBLP changes its bot protection and API from time to time,
+        so the details below matter a lot.
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and OS
+      placeholder: Chrome 151 / macOS 15.6, Edge 151 / Windows 11
+    validations:
+      required: true
+  - type: input
+    id: query
+    attributes:
+      label: Search query or DBLP record URL
+      placeholder: Attention Is All You Need
+    validations:
+      required: true
+  - type: textarea
+    id: popup
+    attributes:
+      label: What did the popup show?
+      description: Status text, error message, or a screenshot.
+    validations:
+      required: true
+  - type: textarea
+    id: tab
+    attributes:
+      label: What did the background DBLP tab show?
+      description: A normal DBLP page, a "Making sure you're not a bot" challenge, or an error page?
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console output (optional)
+      description: Right-click the extension popup → Inspect → Console, and the DBLP tab's DevTools console.
