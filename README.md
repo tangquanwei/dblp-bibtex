@@ -1,12 +1,12 @@
 # DBLP BibTeX
 
+**English** | [简体中文](README.zh.md)
+
 [![CI](https://github.com/tangquanwei/dblp-bibtex/actions/workflows/ci.yml/badge.svg)](https://github.com/tangquanwei/dblp-bibtex/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Manifest V3](https://img.shields.io/badge/manifest-v3-brightgreen.svg)](https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3)
 
 **Search DBLP from your toolbar and copy the original BibTeX — using your own browser session to pass DBLP's bot check.**
-
-[中文说明](README.zh.md)
 
 ![Extension popup](docs/screenshot.png)
 

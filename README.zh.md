@@ -1,11 +1,12 @@
 # DBLP BibTeX
 
+**简体中文** | [English](README.md)
+
 [![CI](https://github.com/tangquanwei/dblp-bibtex/actions/workflows/ci.yml/badge.svg)](https://github.com/tangquanwei/dblp-bibtex/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Manifest V3](https://img.shields.io/badge/manifest-v3-brightgreen.svg)](https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3)
 
 **在浏览器工具栏里搜 DBLP，复制 DBLP 的原始 BibTeX——用你自己的浏览器会话通过 DBLP 的人机校验。**
-
-[English](README.md)
 
 ![扩展弹窗](docs/screenshot.png)
 
@@ -13,7 +14,7 @@
 
 ## 为什么要这么绕
 
-DBLP 现在对非浏览器客户端返回 [Anubis](https://anubis.techaro.lol/) 的工作量证明挑战（`HTTP 202` + "Making sure you're not a bot"）。扩展如果直接 `fetch` `https://dblp.org/search/publ/api`，拿到的只会是挑战页。
+DBLP 现在对非浏览器客户端返回 [Anubis](https://anubis.techaro.lol/) 的工作量证明挑战（`HTTP 202` + "Making sure you're not a bot"）。扩展如果直接 `fetch` `https://dblp.org/search/publ/api`，拿到的只会是挑战页，不是 JSON。
 
 这个扩展不去实现或伪造挑战，而是复用你自己的浏览器：
 
@@ -72,7 +73,17 @@ npm run check   # 校验 manifest、文件布局、PNG 签名、JS 语法
 npm run pack    # 生成 dist/dblp-bibtex-<version>.zip
 ```
 
-## 结构
+## 工作原理
+
+```
+popup.js ──runtime 消息──▶ sw.js ──tabs.create──▶ https://dblp.org/（后台标签页）
+   ▲                          │                        │
+   │                          │  sendMessage           │ content script (content.js)
+   └──── 结果 / BibTeX ◀──────┴────────────────────────┘
+                                同源 fetch：
+                                /search/publ/api
+                                /rec/<key>.bib?param=1
+```
 
 | 文件 | 作用 |
 |---|---|
