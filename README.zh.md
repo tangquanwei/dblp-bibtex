@@ -64,7 +64,7 @@ git clone https://github.com/tangquanwei/dblp-bibtex.git
 ## 测试
 
 - **端到端自动化**：把扩展装进 Chrome for Testing（headless），指向一个模拟 DBLP JSON 接口与 `.bib` 端点的本地 mock，覆盖标签页创建、内容脚本注入、搜索、渲染、`.bib` 抓取、复制按钮、重开弹窗恢复结果。
-- **CI 不覆盖**：真实 DBLP 的 Anubis 校验。headless 浏览器会被 DBLP 拒绝（"Oh noes!"），真实站点只能在普通桌面浏览器里手动验证。
+- **真实 DBLP（手动验证）**：2026-11-03 在 macOS 27 的桌面 Chrome 156 上验证通过——后台标签页通过了 DBLP 的 Anubis 校验，搜索能返回结果，`.bib` 端点返回原始条目。CI 无法覆盖这一步，因为 DBLP 会拒绝 headless 浏览器（"Oh noes!"），所以它保持为手动检查。
 
 本地检查：
 

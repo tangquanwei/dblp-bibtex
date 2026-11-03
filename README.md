@@ -66,7 +66,7 @@ No `<all_urls>`, no page scraping beyond `dblp.org`, no telemetry. See [PRIVACY.
 ## Testing
 
 - **Automated, end-to-end:** the extension is loaded into Chrome for Testing (headless), pointed at a local mock that mimics DBLP's JSON API and `.bib` endpoints. The test covers tab creation, content-script injection, search, rendering, `.bib` fetching, copy wiring, and restoring results after reopening the popup.
-- **Not covered by CI:** the real DBLP Anubis challenge. Headless browsers are rejected by DBLP ("Oh noes!"), so the real-site check is verified manually in a normal desktop browser.
+- **Real DBLP (manual):** verified on 2026-11-03 in desktop Chrome 156 on macOS 27 — the background tab passes DBLP's Anubis challenge, the search returns results, and the `.bib` endpoint returns the original entry. CI cannot cover this step because DBLP rejects headless browsers ("Oh noes!"), so it stays a manual check.
 
 Run the local checks:
 
